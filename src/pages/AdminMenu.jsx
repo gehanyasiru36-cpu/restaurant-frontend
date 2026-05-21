@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { PlusCircle, Trash2, Image, DollarSign, Tag, Utensils, Upload } from 'lucide-react';
 
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://restaurant-backend-production-585d.up.railway.app';
 const FALLBACK_IMAGE = 'https://placehold.co/150x150/e2e8f0/64748b?text=Food';
 
 const AdminMenu = () => {

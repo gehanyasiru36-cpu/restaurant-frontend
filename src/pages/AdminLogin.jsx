@@ -10,7 +10,7 @@ export default function AdminLogin({ onLoginSuccess }) {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/admin/login', { username, password });
+      const response = await axios.post('https://restaurant-backend-production-585d.up.railway.app/api/admin/login', { username, password });
       if (response.data.success) {
         localStorage.setItem('adminToken', response.data.token);
         onLoginSuccess();

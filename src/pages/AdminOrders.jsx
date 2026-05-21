@@ -3,7 +3,7 @@ import axios from 'axios';
 import io from 'socket.io-client';
 import { CheckCircle, XCircle, Trash2, PlusCircle, Save } from 'lucide-react';
 
-const socket = io("http://localhost:5000");
+const socket = io("https://restaurant-backend-production-585d.up.railway.app");
 
 export default function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -12,7 +12,7 @@ export default function AdminOrders() {
 
   const fetchAllOrders = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/orders/all');
+      const response = await axios.get('https://restaurant-backend-production-585d.up.railway.app/api/orders/all');
       setOrders(Array.isArray(response.data) ? response.data : []);
     } catch (error) { console.error("Error:", error); }
   };
@@ -30,7 +30,7 @@ export default function AdminOrders() {
   const deleteOrder = async (id) => {
     if (window.confirm("මේ ඕඩර් එක සදහටම මැකීමට අවශ්‍යද?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/orders/${id}`);
+        await axios.delete(`https://restaurant-backend-production-585d.up.railway.app/api/orders/${id}`);
         setOrders(orders.filter(order => order._id !== id));
       } catch (error) { alert("Delete කිරීමට නොහැකි විය."); }
     }
@@ -39,7 +39,7 @@ export default function AdminOrders() {
   // 2. ADD NEW ORDER
   const handleSaveOrder = async () => {
     try {
-      const res = await axios.post('http://localhost:5000/api/orders', newOrder);
+      const res = await axios.post('https://restaurant-backend-production-585d.up.railway.app/api/orders', newOrder);
       setOrders([res.data, ...orders]);
       setIsModalOpen(false);
       setNewOrder({ table_number: '', items: [{ name: '', qty: 1 }], total: 0 });
@@ -48,7 +48,7 @@ export default function AdminOrders() {
 
   const updateOrderStatus = async (id, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/orders/${id}`, { status: newStatus });
+      await axios.put(`https://restaurant-backend-production-585d.up.railway.app/api/orders/${id}`, { status: newStatus });
       setOrders(orders.map(o => (o._id === id ? { ...o, status: newStatus } : o)));
     } catch (error) { console.error("Update error:", error); }
   };

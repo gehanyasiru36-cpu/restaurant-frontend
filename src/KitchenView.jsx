@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import axios from "axios";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://restaurant-backend-production-585d.up.railway.app");
 
 function KitchenView() {
   const [orders, setOrders] = useState([]);
@@ -26,7 +26,7 @@ function KitchenView() {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/orders");
+      const response = await axios.get("https://restaurant-backend-production-585d.up.railway.app/api/orders");
       const activeOrders = response.data.filter(order => order.status === "Preparing" || order.status === "Pending");
       setOrders(activeOrders || []);
     } catch (error) {
@@ -37,7 +37,7 @@ function KitchenView() {
 
   const handleCompleteOrder = async (orderId) => {
     try {
-      await axios.put(`http://localhost:5000/api/orders/${orderId}`, { status: "Completed" });
+      await axios.put(`https://restaurant-backend-production-585d.up.railway.app/api/orders/${orderId}`, { status: "Completed" });
       socket.emit("updateStatus", { orderId, status: "Completed" });
       setOrders((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
     } catch (error) {

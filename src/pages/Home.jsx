@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import io from "socket.io-client";
-const socket = io("http://localhost:5000");
+const socket = io("https://restaurant-backend-production-585d.up.railway.app");
 
 const IconPlus = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>;
 const IconArrow = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>;
@@ -355,7 +355,7 @@ export default function Home() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/foods")
+    axios.get("https://restaurant-backend-production-585d.up.railway.app/api/foods")
       .then((res) => {
         let dataArray = [];
         if (Array.isArray(res.data)) dataArray = res.data;
@@ -393,7 +393,7 @@ export default function Home() {
     const total = cartDetails.reduce((sum, item) => sum + (item.price * item.qty), 0);
     const orderPayload = { table_number: "1", customer_name: "Customer", items: cartDetails, total: total.toFixed(2) };
     try {
-      const response = await axios.post("http://localhost:5000/api/orders", orderPayload);
+      const response = await axios.post("https://restaurant-backend-production-585d.up.railway.app/api/orders", orderPayload);
       if (response.data) {
         setOrders(prev => [response.data, ...prev]);
         setCartItems({});
