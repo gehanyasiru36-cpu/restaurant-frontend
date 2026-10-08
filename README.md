@@ -1,16 +1,67 @@
-# React + Vite
+# Restaurant Frontend (Customer App)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Customer-facing web application for a restaurant / food delivery system, built with React and Vite. It connects to the [restaurant-backend](https://github.com/gehanyasiru36-cpu/restaurant-backend) REST API and uses Socket.IO for real-time updates.
 
-Currently, two official plugins are available:
+## Tech Stack
+- **Framework:** React 19
+- **Build tool:** Vite
+- **Routing:** React Router
+- **HTTP client:** Axios
+- **Real-time:** Socket.IO Client
+- **Charts:** Recharts
+- **QR code scanning:** html5-qrcode
+- **Icons:** Lucide React
+- **Linting:** ESLint
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- Single-page application with client-side routing
+- Real-time updates via Socket.IO
+- QR code scanning support
+- Data visualisation with charts
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
+- [Node.js](https://nodejs.org/) v22.13.0 or later
+- npm
+- The [restaurant-backend](https://github.com/gehanyasiru36-cpu/restaurant-backend) server running
 
-## Expanding the ESLint configuration
+### Installation
+```bash
+git clone https://github.com/gehanyasiru36-cpu/restaurant-frontend.git
+cd restaurant-frontend
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Environment Variables
+If the app reads the backend URL from an environment variable, create a `.env` file in the project root:
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+> Never commit your `.env` file to GitHub.
+
+### Run in Development
+```bash
+npm run dev
+```
+Open the URL shown in the terminal (usually `http://localhost:5173`).
+
+### Build for Production
+```bash
+npm run build
+npm run preview
+```
+
+### Lint
+```bash
+npm run lint
+```
+
+## Related Repositories
+- [restaurant-backend](https://github.com/gehanyasiru36-cpu/restaurant-backend)
+
+## Author
+**Gehan Yasiru Rashmitha**
+[LinkedIn](https://www.linkedin.com/in/gehan-yasiru-923b36353) | [GitHub](https://github.com/gehanyasiru36-cpu)
